@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class adminController extends Controller
 {
     public function index() {
-        return view ('Models.admin');
+        return view ('/admin');
     }
 
     public function all_soldiers() {
@@ -123,7 +123,7 @@ class adminController extends Controller
         ->get();
 
 
-        return view('Models.a_soldiers')
+        return view('/a_soldiers')
         ->with('commander', $commander)
         ->with('boss', $boss)
         ->with('technician', $technician)
@@ -154,7 +154,7 @@ class adminController extends Controller
         ->get();
 
         // $docs = Documents::orderBy('end_date', 'desc');
-        return view('Models.a_documents')->with('docs', $docs);
+        return view('a_documents')->with('docs', $docs);
     }
 
     public function allTanks()
@@ -163,23 +163,23 @@ class adminController extends Controller
         ->orderBy('model')
         ->get();
 
-        return view('Models.a_tanks')
+        return view('/a_tanks')
         ->with('tanks', $tanks);
     }
 
     public function addSoldier()
     {
-        return view('Models.addsoldier');
+        return view('/addsoldier');
     }
 
     public function addDoc()
     {
-        return view('Models.adddoc');
+        return view('/adddoc');
     }
 
     public function addTank()
     {
-        return view('Models.addtank');
+        return view('/  addtank');
     }
 
     public function storeSoldier(Request $request)

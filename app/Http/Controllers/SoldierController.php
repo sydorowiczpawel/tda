@@ -33,7 +33,7 @@ class SoldierController extends Controller
         ->orderBy('end_date', 'desc')
         ->get();
 
-        return view('/Models.personalFile')
+        return view('/personalFile')
         ->with('docs', $docs)
         ->with('eos', $eos)
         ->with('user', $user)
@@ -47,7 +47,7 @@ class SoldierController extends Controller
      */
     public function create()
     {
-        return view('Models.addSoldier');
+        return view('/addSoldier');
     }
 
     /**
@@ -104,7 +104,7 @@ class SoldierController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('/Models.editSoldier')->with('user', $user);
+        return view('/editSoldier')->with('user', $user);
     }
 
     /**

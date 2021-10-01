@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+
+Route::get('/', function () {
+    return redirect('/login');
+});
 
 Route::get('/home', function () {
     return view('/personalFile{pass_number}');
@@ -33,7 +33,7 @@ Route::post('/updateSoldier/{id}', [App\Http\Controllers\SoldierController::clas
 Route::post('/soldierStore', [App\Http\Controllers\SoldierController::class, 'store']);
 Route::delete('/deleteSoldier/{id}', [App\Http\Controllers\SoldierController::class, 'destroy']);
 // Documents
-Route::get('userDocs/{pass_number}', [App\Http\Controllers\documentsController::class, 'show']);
+Route::get('userDocs/{pass_number}', [App\Http\Controllers\DocumentsController::class, 'show']);
 Route::get('/doclst', [App\Http\Controllers\documentsController::class, 'index']);
 Route::get('/adddoc/{pass_number}', [App\Http\Controllers\documentsController::class, 'create']);
 Route::post('/docstore/{pass_number}', [App\Http\Controllers\documentsController::class, 'store']);
@@ -50,6 +50,4 @@ Route::post('/finishexitorder/{id}', [App\Http\Controllers\exitOrderController::
 Route::get('/eodetails/{id}', [App\Http\Controllers\exitOrderController::class, 'show']);
 // User
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/{pass_number}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

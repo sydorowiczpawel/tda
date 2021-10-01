@@ -18,7 +18,7 @@ class documentsController extends Controller
 
 	public function create()
 	{
-		return view('/Models.addDoc');
+		return view('/addDoc');
 	}
 
 	public function store(Request $request, $p_num)
@@ -40,7 +40,7 @@ class documentsController extends Controller
 			]
 		);
 
-		return redirect('/home');
+		return redirect('/home/{pass_number}');
 	}
 
 	public function show($pass_number)
@@ -50,14 +50,14 @@ class documentsController extends Controller
 		->orderBy('end_date', 'desc')
 		->get();
 
-		return view('/Models.userDocs')->with('docs', $docs);
+		return view('/userDocs')->with('docs', $docs);
 	}
 
 	public function edit($id)
 	{
 		$doc = Documents::find($id);
 
-		return view('/Models.editdoc')->with('doc', $doc);
+		return view('/editdoc')->with('doc', $doc);
 	}
 
 	public function update(Request $request, $id)

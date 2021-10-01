@@ -17,7 +17,7 @@ class exitOrderController extends Controller
 		-> where('pass_number', $p_num)
 		-> get();
 
-		return view('/Models.allextorders')
+		return view('/allextorders')
 		-> with('eos', $eos);
 	}
 
@@ -27,7 +27,7 @@ class exitOrderController extends Controller
 		-> where('pass_number', $p_num)
 		-> get();
 
-    return view('Models.addexitorder')
+    return view('/addexitorder')
 		-> with('tanks', $tanks);
   }
 
@@ -67,7 +67,7 @@ class exitOrderController extends Controller
 		->get();
 		$users = User::all();
 
-    return view('/Models.eodetails') -> with('eos', $eos);
+    return view('/eodetails') -> with('eos', $eos);
   }
 
   public function showSelected($tank_number) {
@@ -79,14 +79,14 @@ class exitOrderController extends Controller
 		->where('tank_number', $tank_number)
 		->get();
 
-    return view('/Models.selTankOrders')->with('tank', $tank)->with('orders', $orders);
+    return view('/selTankOrders')->with('tank', $tank)->with('orders', $orders);
 
   }
 
   public function edit($id) {
     $eo = ExitOrder::find($id);
 
-		return view('Models.editexitorder')->with('eo', $eo);
+		return view('/editexitorder')->with('eo', $eo);
   }
 
   public function update(Request $request, $id) {
